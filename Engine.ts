@@ -18,7 +18,18 @@ namespace Poriphera {
 
             wgl.clearColor(0, 0, 0, 1);
 
+            // this.resize();
             this.update();
+        }
+
+        /**
+         * Resizes the canvas to fit the window.
+         */
+        public resize(): void {
+            if (this.canvas !== undefined) {
+                this.canvas.width = window.innerWidth;
+                this.canvas.height = window.innerHeight;
+            }
         }
 
         /**

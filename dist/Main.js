@@ -1,6 +1,10 @@
+var engine;
 window.onload = function () {
-    var engine = new Poriphera.Engine();
+    engine = new Poriphera.Engine();
     engine.start();
+};
+window.onresize = function () {
+    engine.resize();
 };
 var Poriphera;
 (function (Poriphera) {
@@ -13,6 +17,12 @@ var Poriphera;
             Poriphera.wgl.clearColor(0, 0, 0, 1);
             this.update();
         };
+        Engine.prototype.resize = function () {
+            if (this.canvas !== undefined) {
+                this.canvas.width = window.innerWidth;
+                this.canvas.height = window.innerHeight;
+            }
+        };
         Engine.prototype.update = function () {
             Poriphera.wgl.clear(Poriphera.wgl.COLOR_BUFFER_BIT);
             requestAnimationFrame(this.update.bind(this));
@@ -20,6 +30,15 @@ var Poriphera;
         return Engine;
     }());
     Poriphera.Engine = Engine;
+})(Poriphera || (Poriphera = {}));
+var Poriphera;
+(function (Poriphera) {
+    var Shader = (function () {
+        function Shader() {
+        }
+        return Shader;
+    }());
+    Poriphera.Shader = Shader;
 })(Poriphera || (Poriphera = {}));
 var Poriphera;
 (function (Poriphera) {
